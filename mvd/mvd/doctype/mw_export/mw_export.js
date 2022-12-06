@@ -4,7 +4,8 @@
 frappe.ui.form.on('MW Export', {
     refresh: function(frm) {
         if (frm.doc.__islocal) {
-           cur_frm.save();
+           frappe.dom.freeze('Abonenn*tinnen werden gezählt…')
+           cur_frm.save().then(function(){frappe.dom.unfreeze()});
         }
         
         if (cur_frm.doc.zeitungsauflage_data) {
